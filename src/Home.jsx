@@ -10,28 +10,28 @@ export default function Home() {
 
   useEffect(() => {
     async function getData() {
-      inputRef.current.focus();
-      const result = await axios.get("http://localhost:3001/get");
+      const result = await axios.get("https://todo-list-pukyong.koyeb.app/get");
       setTodos(result.data);
+      inputRef.current.focus();
     }
     getData();
   }, []);
 
   const handleAdd = async () => {
-    await axios.post("http://localhost:3001/add", { tastk: task });
-    const result = await axios.get("http://localhost:3001/get");
+    await axios.post("https://todo-list-pukyong.koyeb.app/add", { task: task });
+    const result = await axios.get("https://todo-list-pukyong.koyeb.app//get");
     setTodos(result.data);
     inputRef.current.value = "";
     inputRef.current.focus();
   };
   const handleEdit = async(id) => {
-    await axios.put("http://localhost:3001/update/"+id)
-    const result = await axios.get("http://localhost:3001/get");
+    await axios.put("https://todo-list-pukyong.koyeb.app/update/"+id)
+    const result = await axios.get("https://todo-list-pukyong.koyeb.app/get");
     setTodos(result.data)
   }
   const handleDelete = async(id) => {
-    await axios.delete("http://localhost:3001/update/"+id)
-    const result = await axios.get("http://localhost:3001/get")
+    await axios.delete("https://todo-list-pukyong.koyeb.app/update/"+id)
+    const result = await axios.get("https://todo-list-pukyong.koyeb.app/get")
     setTodos(result.data)
   }
 
